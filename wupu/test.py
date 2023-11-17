@@ -61,6 +61,10 @@ def normalize(poses_df):
 def draw_axes(img, pitch, yaw, roll, tx, ty, size=50):
     yaw = -yaw
     rotation_matrix = cv2.Rodrigues(np.array([pitch, yaw, roll]))[0].astype(np.float64)
+    
+    # for testing
+    print(rotation_matrix)
+    
     axes_points = np.array([
         [1, 0, 0, 0],
         [0, 1, 0, 0],
@@ -125,7 +129,9 @@ while(cap.isOpened()):
 
         img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
         cv2.imshow('img', img)
-        print(text)
+        # print(text)
+        # print(nose_x, nose_y)
+        
         
         k = cv2.waitKey(1) & 0xFF
         if k == ord("q"):
