@@ -23,13 +23,15 @@ void loop() {
       dif_angles[j]=dest_angles[j]-current_angles[j];
       current_angles[j]=dest_angles[j];
     }
-    Serial.println("Your dest");
+    Serial.println("Your dest :");
     for (int i=0 ;i<4;i++ ){
       Serial.println(dest_angles[i]);
     }
-    Serial.println("difference");
+    Serial.println("difference :");
     for (int k=0 ;k<4;k++ ){
       Serial.println(dif_angles[k]);
     }
+    Serial.println("Done");
   }
+  
 }

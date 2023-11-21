@@ -63,6 +63,7 @@ void loop() {
     for (int o=0;o<4;o++) {
       current_angles[o]=dest_angles[o];
     }
+    println("Done");
   }
 
 
