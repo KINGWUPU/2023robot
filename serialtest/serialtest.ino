@@ -11,6 +11,7 @@ Servo motor4;
 //,로 구분된 4가지 정수를 받아들여 값이 배열에 정확히 저장되는지 확인해보는 파일
 int current_angles[4]={60,60,60,60};
 int dest_angles[4]={60,60,60,60};
+
 //현재각과 목표각의 차이 저장
 int dif_angles[4]={0,0,0,0};
 void setup() {
@@ -56,6 +57,10 @@ void loop() {
     if (max_duration!=0) {
         Serial.println("move!");
         move_angle(max_duration,min_duration);
+      //  motor1.write(dest_angles[0]);
+      //  motor2.write(dest_angles[1]);
+       // motor3.write(dest_angles[2]);
+       // motor4.write(dest_angles[3]);
     }
     
 
@@ -63,7 +68,7 @@ void loop() {
     for (int o=0;o<4;o++) {
       current_angles[o]=dest_angles[o];
     }
-    println("Done");
+    Serial.println("Done");
   }
 
 
@@ -94,9 +99,9 @@ void move_angle(int max, int min){
       
     }
   }
-  Serial.println("start t1");
+/*  Serial.println("start t1");
   //속력 증가 구간
-  for(int d_1=0,delay_t1=300; d_1<duration ;d_1++){
+  for(int d_1=0,delay_t1=200; d_1<duration ;d_1++){
     
     for (int j=0;j<4;j++) {
       //도달 특정 목표각에 도달한다면 
@@ -114,10 +119,11 @@ void move_angle(int max, int min){
     if (delay_t1<100) {
       continue;
     }
-    delay_t1-=10;
-  }
+    delay_t1-=40;
+  }*/
   //구간 2의 경우 max 값에 의해 결정
-  duration=max/3;
+//  duration=max/3;
+  duration=max;
   //속력 일정 구간
   Serial.println("start t2");
   for(int d_2 =0;d_2<duration;d_2++){
@@ -138,13 +144,13 @@ void move_angle(int max, int min){
     motor3.write(current_angles[2]);
     motor4.write(current_angles[3]);
     Serial.println("2");
-    delay(80);
+    delay(40);
   }
 
   //속력 감소 구간, 해당 구간은 모두 목표각으로 갔을 때가 종료시점
-  Serial.println("start t3");
+ /* Serial.println("start t3");
   while(1) {
-    int delay_t3=80;
+    int delay_t3=40;
     for (int j=0,cnt=0;j<4;j++) {
         if (current_angles[j]==dest_angles[j]){
           cnt++;
@@ -168,6 +174,6 @@ void move_angle(int max, int min){
       continue;
     }
     delay_t3+=50;
-  }
+  }*/
   
 }
