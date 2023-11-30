@@ -16,7 +16,7 @@ while True :
     
     while True :
         received_data=ser.readline().decode().strip() #arduino로 부터 받은 데이터를 개행문자까지 제거하여 저장
-        #print("Recieved :" ,received_data)
-       # if received_data=='Done':
-       #     break
+        print("Recieved :" ,received_data)
+        if received_data=='Done':
+           break
     

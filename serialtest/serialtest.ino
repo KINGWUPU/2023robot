@@ -31,6 +31,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  
   if (Serial.available()>0){
     String receivedString = Serial.readStringUntil('\n');
     int index=0;
@@ -55,7 +56,7 @@ void loop() {
 
     //만약 모터가 움직여야할 최대각도가 0이 아니라면 모터를 움직여야함, 0인 경우는 모터를 움직일 필요가 없음
     if (max_duration!=0) {
-        Serial.println("move!");
+        //Serial.println("move!");
         move_angle(max_duration,min_duration);
       //  motor1.write(dest_angles[0]);
       //  motor2.write(dest_angles[1]);
@@ -125,7 +126,7 @@ void move_angle(int max, int min){
 //  duration=max/3;
   duration=max;
   //속력 일정 구간
-  Serial.println("start t2");
+  //Serial.println("start t2");
   for(int d_2 =0;d_2<duration;d_2++){
     //cnt의 경우 모든 direction이 0이 되었을 때(즉 모터가 더 이상 움직이지 않을 때) 종료조건
     for (int j=0,cnt=0;j<4;j++) {
@@ -133,7 +134,7 @@ void move_angle(int max, int min){
           cnt++;
           direction[j]=0;
           if(cnt==4){
-            Serial.println("terminate 2");
+          //  Serial.println("terminate 2");
             return;
           }
         }
@@ -143,7 +144,7 @@ void move_angle(int max, int min){
     motor2.write(current_angles[1]);
     motor3.write(current_angles[2]);
     motor4.write(current_angles[3]);
-    Serial.println("2");
+   // Serial.println("2");
     delay(40);
   }
 

@@ -9,33 +9,29 @@ Servo motor2;
 Servo motor3;
 Servo motor4;
 void setup() {
-  // put your setup code here, to run once:
+  // put your setup code here, to run once:q
   // arduino - motor 연결
   motor1.attach(6); //pin number 입력
   //motor2.attach(9);
   //motor3.attach(10); 
  // motor4.attach(11);
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-  //각도 입력
   motor1.write(60);
- // motor2.write(60);
-  //motor3.write(60);
-  //motor4.write(60);
-  int j=200;
-  delay(1000);
-  //속도의 경우 for 문을 통해 제어 가능
-  //delay가 10정도면 원래 속도처럼 동작
-  for (int theta1=0; theta1<120; theta1++){
-    motor1.write(theta1);
-    delay(j);
-    if (j<20) {
-      continue;
-    }
-    j-=10;
-     
+  Serial.begin(9600);
+}
+int angles=0;
+String receivedString;
+void loop() {
+  
+  if (Serial.available()>0){
+    receivedString = Serial.readStringUntil('\n');
+    
+    //char *ptr = strtok(const_cast<char*>(receivedString.c_str()), ",\n"); // 쉼표 또는 개행 문자로 문자열 분리
+    receivedString.trim();  
+    const char* ptr=receivedString.c_str();
+    angles = atoi(ptr); // 문자열을 정수로 변환하여 배열에 저장
+   // Serial.println(angles);
+    motor1.write(angles);
+    delay(1000);
+    Serial.println("Done");
   }
 }
-
