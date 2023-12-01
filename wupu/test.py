@@ -125,7 +125,22 @@ while(cap.isOpened()):
                 text = 'Forward'
                 
         cv2.putText(img, text, (25, 75), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+        
+        # change to radian
+        roll2 = roll_pred * 57.3
+        yaw2 = yaw_pred * 57.3
+        pitch2 = pitch_pred * 57.3
+        
+        # cv2.putText(img, f"Roll: {roll2:.2f}", (25, 105), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+        # cv2.putText(img, f"Yaw: {yaw2:.2f}", (25, 135), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+        # cv2.putText(img, f"Pitch: {pitch2:.2f}", (25, 165), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+        
         # cv2.putText(img, f"Roll: {roll_pred:.2f}", (25, 105), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+        # cv2.putText(img, f"Yaw: {yaw_pred:.2f}", (25, 135), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+        # cv2.putText(img, f"Pitch: {pitch_pred:.2f}", (25, 165), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+        
+        # cv2.putText(img, f"X: {nose_x}", (25, 195), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+        # cv2.putText(img, f"Y: {nose_y}", (25, 225), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
         img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
         cv2.imshow('img', img)
