@@ -63,7 +63,7 @@ def draw_axes(img, pitch, yaw, roll, tx, ty, size=50):
     rotation_matrix = cv2.Rodrigues(np.array([pitch, yaw, roll]))[0].astype(np.float64)
     
     # for testing
-    print(rotation_matrix)
+    # print(rotation_matrix)
     
     axes_points = np.array([
         [1, 0, 0, 0],
@@ -127,9 +127,9 @@ while(cap.isOpened()):
         cv2.putText(img, text, (25, 75), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
         
         # change to radian
-        roll2 = roll_pred * 57.3
-        yaw2 = yaw_pred * 57.3
-        pitch2 = pitch_pred * 57.3
+        # roll2 = roll_pred * 57.3
+        # yaw2 = yaw_pred * 57.3
+        # pitch2 = pitch_pred * 57.3
         
         # cv2.putText(img, f"Roll: {roll2:.2f}", (25, 105), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
         # cv2.putText(img, f"Yaw: {yaw2:.2f}", (25, 135), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
@@ -143,7 +143,9 @@ while(cap.isOpened()):
         # cv2.putText(img, f"Y: {nose_y}", (25, 225), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
         img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
-        cv2.imshow('img', img)
+        vertical = cv2.flip(img, 1)
+        # cv2.imshow('img', img)
+        cv2.imshow('vertical', vertical)
         # print(text)
         # print(nose_x, nose_y)
         

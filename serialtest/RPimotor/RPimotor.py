@@ -12,7 +12,7 @@ angle4=60
 #port 열기
 
 ser = serial.Serial(serial_port,baud_rate)
-
+time.sleep(2) #시리얼 통신 연결 제대로 될때까지 대기하자
 while True :
     #message=input('input some text :')
     #print(message.encode())
@@ -25,7 +25,6 @@ while True :
     print('send')
     while True :
         print('here')
-        time.sleep(0.5) #write와 read간 여유를 주어 통신과정에 충분한 시간을 보장해야함, 이거 없으면 안돌아감??돌아간다...
         received_data=ser.readline().decode().strip() #arduino로 부터 받은 데이터를 개행문자까지 제거하여 저장
         
         print(received_data)
