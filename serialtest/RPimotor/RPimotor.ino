@@ -9,8 +9,8 @@ Servo motor4;
 
 //simple serial tset
 //,로 구분된 4가지 정수를 받아들여 값이 배열에 정확히 저장되는지 확인해보는 파일
-int current_angles[4]={60,60,60,60};
-int dest_angles[4]={60,60,60,60};
+int current_angles[4]={60,80,60,60};
+int dest_angles[4]={60,80,60,60};
 
 //현재각과 목표각의 차이 저장
 int dif_angles[4]={0,0,0,0};
@@ -24,7 +24,7 @@ void setup() {
   motor4.attach(11);
   //initial angles are 60
   motor1.write(60);
-  motor2.write(60);
+  motor2.write(80);
   motor3.write(60);
   motor4.write(60);
   //board rate 
@@ -144,7 +144,7 @@ void move_angle(int max, int min){
     motor3.write(current_angles[2]);
     motor4.write(current_angles[3]);
    // Serial.println("2");
-    delay(40);
+    delay(100);
   }
 
   //속력 감소 구간, 해당 구간은 모두 목표각으로 갔을 때가 종료시점
