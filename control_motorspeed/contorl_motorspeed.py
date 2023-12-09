@@ -17,8 +17,8 @@ while True :
     message=message+'\n'
     print(message)
     ser.write(message.encode()) #문자열을 바이트로 인코드
-    time.sleep(0.1)
-    print("g")
+   # time.sleep(0.1)
+   # print("g")
     received_data=ser.readline().decode().strip() 
     print("dd")
     angles=angles+1

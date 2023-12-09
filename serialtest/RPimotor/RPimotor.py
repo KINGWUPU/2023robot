@@ -11,17 +11,25 @@ angle3=60
 angle4=60
 #port 열기
 
+flag=1
 ser = serial.Serial(serial_port,baud_rate)
 time.sleep(2) #시리얼 통신 연결 제대로 될때까지 대기하자
 while True :
     #message=input('input some text :')
     #print(message.encode())
-    angle1=angle1+10
-    if angle1>110 :
-        angle1=60
+    if flag==1 :
+        angle1=angle1-5
+        if angle1<40 :
+            flag=0
+    if flag==0 :
+        angle1=angle1+5
+        if angle1>80 :
+            flag=1
+    
     message= str(angle1)+','+str(angle2)+','+str(angle3)+','+str(angle4)
     print(message.encode())
     ser.write(message.encode()) #문자열을 바이트로 인코드
+    
     print('send')
     while True :
         print('here')
