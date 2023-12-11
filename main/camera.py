@@ -96,7 +96,7 @@ def capture_axis():
         
         #사람 없는 경우 모든 방향과 좌표를 0으로 설정
         if face_features==[] :
-            radian = [0,0,0,0,0]
+            radian = [0,0,0,320,240]
             return radian
         
         if len(face_features):
