@@ -79,7 +79,7 @@ def setting_dir_pos(roll_pitch_yaw) :
    # print(roll_pitch_yaw)  
    
 def switch_pressed():
-    print("setting pos!") 
+    #print("setting pos!") 
     global angle1,angle2,angle3,angle4, roll, pitch,yaw,x,y
     if angle1<60 :
         d1=1
@@ -120,7 +120,7 @@ def switch_pressed():
         if angle4!=60 :
             angle4=angle4+d4
         time.sleep(0.1)
-        print("setting pos")
+        #fprint("setting pos")
     
     roll=0
     pitch=0
@@ -151,6 +151,7 @@ try :
     kit.servo[6].angle=60
     kit.servo[9].angle=60
     time.sleep(0.2)
+    #waiting switch
     while True :
         if GPIO.input(switch_pin) == False:
             break  
@@ -170,9 +171,8 @@ try :
     print(roll_pitch_yaw)
 
     while(1) :
-        # jj=input("cap?")
+        
         roll_pitch_yaw = camera.capture_axis()
-        # camera.cv2.imshow('img', image)
         setting_dir_pos(roll_pitch_yaw)
         if GPIO.input(switch_pin) == False: # 스위치가 눌렸을 때
             switch_pressed()
@@ -218,9 +218,9 @@ try :
                     control_motor4(roll,1)
                     roll_pitch_yaw = camera.capture_axis()
                     setting_dir_pos(roll_pitch_yaw)
-        #print("hi")
+        
         print(roll)        
-    # cap.release()
+    
 
 except KeyboardInterrupt:
     pass
