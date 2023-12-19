@@ -1,5 +1,4 @@
-#switch 추가
-#프로그램 시작 -> 버튼 입력 -> 트랙킹 시작 -> 버튼 입력 -> 초기위치세팅 및 정지 -> 버튼 입력 -> 다시 트랙킹 시작
+#Final main program
 import camera
 import time
 import math
